@@ -2,6 +2,19 @@
 
 <div class="container-fluid">
     <div class="row">
+        <div class="col-4 my-3 mx-auto">
+            <select [(ngModel)]="filterKey" class="form-control">
+                <option *ngFor="let col of cols" [value]="col.key">{{ col.text }}</option>
+            </select>
+        </div>
+        <div class="input col-4 mx-auto">
+            <form class="form-inline my-3">
+                <input (keyup)="onChangePhrase($event)" class="form-control mr-sm-2" type="text" placeholder="Keresés">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-8 offset-2">
             <table class="table table-striped">
                 <thead>
@@ -11,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let customer of customerList$ | async ">
+                    <tr *ngFor="let customer of customerList$ | async | filter:filterKey:phrase ">
                         <td>
                             {{ customer.id}}
                         </td>

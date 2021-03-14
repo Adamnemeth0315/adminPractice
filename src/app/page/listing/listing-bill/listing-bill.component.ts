@@ -16,6 +16,9 @@ export class ListingBillComponent implements OnInit {
 
   billList$: BehaviorSubject<Bill[]> = this.billService.list$;
   cols: ITableCol[] = this.configService.billTableCols;
+  phrase: string = '';
+  filterKey: string = 'amount';
+  filterKeys: string[] = Object.keys(new Bill());
 
   constructor(
     private billService: BillService,
@@ -33,6 +36,10 @@ export class ListingBillComponent implements OnInit {
         this.billService.getAll();
         this.router.navigate(['/bills']);
       });
+  }
+
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
   }
 
 }

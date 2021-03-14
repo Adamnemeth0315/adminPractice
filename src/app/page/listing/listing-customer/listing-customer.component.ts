@@ -14,6 +14,9 @@ export class ListingCustomerComponent implements OnInit {
 
   customerList$: BehaviorSubject<Customer[]> = this.customerService.list$;
   cols: ITableCol[] = this.configService.customerTableCols;
+  phrase: string = '';
+  filterKey: string = 'firstName';
+  filterKeys: string[] = Object.keys(new Customer());
 
   constructor(
     private customerService: CustomerService,
@@ -31,6 +34,10 @@ export class ListingCustomerComponent implements OnInit {
         this.customerService.getAll();
         this.router.navigate(['/customers']);
       });
+  }
+
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
   }
 
 

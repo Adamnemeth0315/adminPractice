@@ -14,6 +14,9 @@ export class ListingProductComponent implements OnInit {
 
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.configService.productTableCols;
+  phrase: string = '';
+  filterKey: string = 'name';
+  filterKeys: string[] = Object.keys(new Product());
 
   constructor(
     private productService: ProductService,
@@ -31,6 +34,10 @@ export class ListingProductComponent implements OnInit {
         this.productService.getAll();
         this.router.navigate(['/products']);
       })
+  }
+
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
   }
 
 }

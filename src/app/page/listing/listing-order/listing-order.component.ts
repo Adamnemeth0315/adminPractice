@@ -14,6 +14,9 @@ export class ListingOrderComponent implements OnInit {
 
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
   cols: ITableCol[] = this.configService.orderTableCols;
+  phrase: string = '';
+  filterKey: string = 'amount';
+  filterKeys: string[] = Object.keys(new Order());
 
   constructor(
     private orderService: OrderService,
@@ -31,6 +34,10 @@ export class ListingOrderComponent implements OnInit {
         this.orderService.getAll();
         this.router.navigate(['/orders']);
       });
+  }
+
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
   }
 
 }
