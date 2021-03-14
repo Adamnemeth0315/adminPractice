@@ -1,0 +1,50 @@
+<h1 class="text-center my-4">Vásárlók listája</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th *ngFor="let col of cols"> {{ col.text }}</th>
+                        <th>Kezelés</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customerList$ | async ">
+                        <td>
+                            {{ customer.id}}
+                        </td>
+                        <td>
+                            {{ customer.firstName }}
+                        </td>
+                        <td>
+                            {{ customer.lastName }}
+                        </td>
+                        <td>
+                            {{ customer.email }}
+                        </td>
+                        <td>
+                            {{ customer.address.zip }} {{ customer.address.country }}
+                            {{ customer.address.city }} {{ customer.address.street }}
+                        </td>
+                        <td>
+                            <div *ngIf="customer.active" style="text-align: center;"><i class="fa fa-check"></i></div>
+                            <div *ngIf="!customer.active" style="text-align: center;"><i class="fa fa-times"></i></div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                                <button class="btn btn-danger" (click)="onRemove(customer)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

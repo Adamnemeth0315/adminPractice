@@ -1,0 +1,42 @@
+<h1 class="text-center my-4">Számlázási lista</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th *ngFor="let col of cols"> {{ col.text }}</th>
+                        <th>Kezelés</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bill of billList$ | async ">
+                        <td>
+                            {{ bill.id}}
+                        </td>
+                        <td>
+                            {{ bill.orderID }}
+                        </td>
+                        <td>
+                            {{ bill.amount }}
+                        </td>
+                        <td>
+                            {{ bill.status }}
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                                <button class="btn btn-danger" (click)="onRemove(bill)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

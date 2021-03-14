@@ -1,0 +1,56 @@
+<h1 class="text-center my-4">Termékek listája</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th *ngFor="let col of cols"> {{ col.text }}</th>
+                        <th>Kezelés</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productList$ | async ">
+                        <td>
+                            {{ product.id}}
+                        </td>
+                        <td>
+                            {{ product.name }}
+                        </td>
+                        <td>
+                            {{ product.type }}
+                        </td>
+                        <td>
+                            {{ product.catId }}
+                        </td>
+                        <td>
+                            {{ product.description }}
+                        </td>
+                        <td>
+                            {{product.price}}
+                        </td>
+                        <td>
+                            <div *ngIf="product.featured" style="text-align: center;"><i class="fa fa-check"></i></div>
+                            <div *ngIf="!product.featured" style="text-align: center;"><i class="fa fa-times"></i></div>
+                        </td>
+                        <td>
+                            <div *ngIf="product.active" style="text-align: center;"><i class="fa fa-check"></i></div>
+                            <div *ngIf="!product.active" style="text-align: center;"><i class="fa fa-times"></i></div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                                <button class="btn btn-danger" (click)="onRemove(product)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
