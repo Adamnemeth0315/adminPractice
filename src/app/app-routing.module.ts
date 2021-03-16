@@ -7,6 +7,7 @@ import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.c
 
 import { HomeComponent } from './page/home/home.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
+import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'products',
     component: ListingProductComponent
+  },
+  {
+    path: 'products/:id',
+    component: EditProductComponent
   },
   {
     path: 'orders',

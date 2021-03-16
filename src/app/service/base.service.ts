@@ -29,7 +29,7 @@ export class BaseService<T extends { id: number }> {
   }
 
   get(id: number): Observable<T> {
-    return Number(id) === 0 ? new Observable<T>() : this.http.get<T>(`${this.config.apiUrl}/${id}`);
+    return Number(id) === 0 ? new Observable<T>() : this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`);
   }
 
   create(entity: T): Observable<T> {

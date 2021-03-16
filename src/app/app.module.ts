@@ -13,6 +13,8 @@ import { ListingOrderComponent } from './page/listing/listing-order/listing-orde
 import { HomeComponent } from './page/home/home.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { FilterPipe } from './pipe/filter.pipe';
+import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FilterPipe } from './pipe/filter.pipe';
     ListingOrderComponent,
     HomeComponent,
     NotFoundComponent,
-    FilterPipe
+    FilterPipe,
+    EditProductComponent,
+
   ],
   imports: [
     BrowserModule,
