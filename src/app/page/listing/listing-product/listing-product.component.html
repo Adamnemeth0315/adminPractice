@@ -13,60 +13,65 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
             </form>
         </div>
-        <div class="row">
-            <div class="col-8 offset-2">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th *ngFor="let col of cols"> {{ col.text }}</th>
-                            <th>Kezelés</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let product of productList$ | async | filter:filterKey:phrase ">
-                            <td>
-                                {{ product.id}}
-                            </td>
-                            <td>
-                                {{ product.name }}
-                            </td>
-                            <td>
-                                {{ product.type }}
-                            </td>
-                            <td>
-                                {{ product.catId }}
-                            </td>
-                            <td>
-                                {{ product.description }}
-                            </td>
-                            <td>
-                                {{product.price}}
-                            </td>
-                            <td>
-                                <div *ngIf="product.featured" style="text-align: center;"><i class="fa fa-check"></i>
-                                </div>
-                                <div *ngIf="!product.featured" style="text-align: center;"><i class="fa fa-times"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <div *ngIf="product.active" style="text-align: center;"><i class="fa fa-check"></i>
-                                </div>
-                                <div *ngIf="!product.active" style="text-align: center;"><i class="fa fa-times"></i>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary" [routerLink]=[product.id]>
-                                        <i class="fa fa-refresh"></i>
-                                    </button>
-                                    <button class="btn btn-danger" (click)="onRemove(product)">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="sorter-header" *ngFor="let col of cols" (click)="onSort(col.key)"> <i
+                                *ngIf="sorterKey === col.key && sorterDirection === 1" class="fa fa-angle-up"></i>
+                            <i *ngIf="sorterKey === col.key && sorterDirection === -1" class="fa fa-angle-down"></i>
+                            {{ col.text }}
+                        </th>
+                        <th>Kezelés</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let product of productList$ | async | filter:filterKey:phrase | sorter:sorterKey:sorterDirection ">
+                        <td>
+                            {{ product.id}}
+                        </td>
+                        <td>
+                            {{ product.name }}
+                        </td>
+                        <td>
+                            {{ product.type }}
+                        </td>
+                        <td>
+                            {{ product.catId }}
+                        </td>
+                        <td>
+                            {{ product.description }}
+                        </td>
+                        <td>
+                            {{product.price}}
+                        </td>
+                        <td>
+                            <div *ngIf="product.featured" style="text-align: center;"><i class="fa fa-check"></i>
+                            </div>
+                            <div *ngIf="!product.featured" style="text-align: center;"><i class="fa fa-times"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="product.active" style="text-align: center;"><i class="fa fa-check"></i>
+                            </div>
+                            <div *ngIf="!product.active" style="text-align: center;"><i class="fa fa-times"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" [routerLink]=[product.id]>
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                                <button class="btn btn-danger" (click)="onRemove(product)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>

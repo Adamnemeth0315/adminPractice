@@ -15,7 +15,7 @@ export class ConfigService {
 
   billTableCols: ITableCol[] = [
     { key: 'id', text: 'id', editable: false },
-    { key: 'orderId', text: 'Rendelés Id', editable: false },
+    { key: 'orderID', text: 'Rendelés Id', editable: false },
     { key: 'amount', text: 'Összeg', editable: true },
     { key: 'status', text: 'Státusz', editable: true },
   ];

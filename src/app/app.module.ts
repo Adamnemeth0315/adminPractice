@@ -14,6 +14,7 @@ import { HomeComponent } from './page/home/home.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { EditProductComponent } from './page/edit/edit-product/edit-product.comp
     NotFoundComponent,
     FilterPipe,
     EditProductComponent,
+    SorterPipe,
 
   ],
   imports: [

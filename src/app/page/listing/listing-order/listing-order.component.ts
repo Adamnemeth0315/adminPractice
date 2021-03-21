@@ -17,6 +17,8 @@ export class ListingOrderComponent implements OnInit {
   phrase: string = '';
   filterKey: string = 'amount';
   filterKeys: string[] = Object.keys(new Order());
+  sorterKey: string = '';
+  sorterDirection: number = 1;
 
   constructor(
     private orderService: OrderService,
@@ -38,6 +40,16 @@ export class ListingOrderComponent implements OnInit {
 
   onChangePhrase(event: Event): void {
     this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  onSort(key: string): void {
+    if (key === this.sorterKey) {
+      this.sorterDirection *= -1;
+    } else {
+      this.sorterDirection = 1;
+    }
+
+    this.sorterKey = key;
   }
 
 }

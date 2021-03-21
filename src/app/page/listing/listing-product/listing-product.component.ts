@@ -17,6 +17,8 @@ export class ListingProductComponent implements OnInit {
   phrase: string = '';
   filterKey: string = 'name';
   filterKeys: string[] = Object.keys(new Product());
+  sorterKey: string = '';
+  sorterDirection: number = 1;
 
   constructor(
     private productService: ProductService,
@@ -38,6 +40,16 @@ export class ListingProductComponent implements OnInit {
 
   onChangePhrase(event: Event): void {
     this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  onSort(key: string): void {
+    if (key === this.sorterKey) {
+      this.sorterDirection *= -1;
+    } else {
+      this.sorterDirection = 1;
+    }
+
+    this.sorterKey = key;
   }
 
 }

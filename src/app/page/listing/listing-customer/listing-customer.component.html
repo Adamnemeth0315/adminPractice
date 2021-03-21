@@ -19,12 +19,17 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th *ngFor="let col of cols"> {{ col.text }}</th>
+                        <th class="sorter-header" *ngFor="let col of cols" (click)="onSort(col.key)"> <i
+                                *ngIf="sorterKey === col.key && sorterDirection === 1" class="fa fa-angle-up"></i>
+                            <i *ngIf="sorterKey === col.key && sorterDirection === -1" class="fa fa-angle-down"></i>
+                            {{ col.text }}
+                        </th>
                         <th>Kezelés</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let customer of customerList$ | async | filter:filterKey:phrase ">
+                    <tr
+                        *ngFor="let customer of customerList$ | async | filter:filterKey:phrase | sorter:sorterKey:sorterDirection ">
                         <td>
                             {{ customer.id}}
                         </td>
