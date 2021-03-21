@@ -15,6 +15,10 @@ import { NotFoundComponent } from './page/not-found/not-found.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
 import { SorterPipe } from './pipe/sorter.pipe';
+import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
+import { EditCustomerComponent } from './page/edit/edit-customer/edit-customer.component';
+import { EditOrderComponent } from './page/edit/edit-order/edit-order.component';
+
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { SorterPipe } from './pipe/sorter.pipe';
     FilterPipe,
     EditProductComponent,
     SorterPipe,
-
+    EditBillComponent,
+    EditCustomerComponent,
+    EditOrderComponent,
   ],
   imports: [
     BrowserModule,

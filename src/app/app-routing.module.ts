@@ -8,6 +8,9 @@ import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.c
 import { HomeComponent } from './page/home/home.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
+import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
+import { EditCustomerComponent } from './page/edit/edit-customer/edit-customer.component';
+import { EditOrderComponent } from './page/edit/edit-order/edit-order.component';
 
 const routes: Routes = [
   {
@@ -19,8 +22,16 @@ const routes: Routes = [
     component: ListingBillComponent
   },
   {
+    path: 'bills/:id',
+    component: EditBillComponent
+  },
+  {
     path: 'customers',
     component: ListingCustomerComponent
+  },
+  {
+    path: 'customers/:id',
+    component: EditCustomerComponent
   },
   {
     path: 'products',
@@ -33,6 +44,10 @@ const routes: Routes = [
   {
     path: 'orders',
     component: ListingOrderComponent
+  },
+  {
+    path: 'orders/:id',
+    component: EditOrderComponent
   },
   {
     path: '**',
