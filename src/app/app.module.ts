@@ -19,6 +19,8 @@ import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
 import { EditCustomerComponent } from './page/edit/edit-customer/edit-customer.component';
 import { EditOrderComponent } from './page/edit/edit-order/edit-order.component';
 import { FooterComponent } from './footer/footer.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -44,7 +46,9 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
