@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Order } from 'src/app/model/order';
 import { ITableCol, ConfigService } from 'src/app/service/config.service';
 import { OrderService } from 'src/app/service/order.service';
+import { StatisticsService } from 'src/app/service/statistics.service';
 
 @Component({
   selector: 'app-listing-order',
@@ -12,6 +13,9 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class ListingOrderComponent implements OnInit {
 
+  numberOfAllOrders$: BehaviorSubject<number> = this.statisticsService
+    .numberOfAllOrders$;
+
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
   cols: ITableCol[] = this.configService.orderTableCols;
   phrase: string = '';
@@ -19,23 +23,31 @@ export class ListingOrderComponent implements OnInit {
   filterKeys: string[] = Object.keys(new Order());
   sorterKey: string = '';
   sorterDirection: number = 1;
+  selectedOrderToDelete: Order = new Order();
 
   constructor(
     private orderService: OrderService,
     private router: Router,
     private configService: ConfigService,
+    private statisticsService: StatisticsService,
   ) { }
 
   ngOnInit(): void {
     this.orderService.getAll();
+    this.statisticsService.subscribeForData();
   }
 
-  onRemove(order: Order): void {
-    this.orderService.remove(order)
-      .subscribe(() => {
-        this.orderService.getAll();
-        this.router.navigate(['/orders']);
-      });
+  setToDelete(order: Order): void {
+    this.selectedOrderToDelete = order;
+  }
+
+  onRemove(): void {
+    this.orderService.remove(this.selectedOrderToDelete)
+      .subscribe(
+        () => {
+          this.orderService.getAll();
+          this.router.navigate(['/orders']);
+        })
   }
 
   onChangePhrase(event: Event): void {

@@ -671,34 +671,6 @@
         "notes": "Something note."
       },
       "active": false
-    },
-    {
-      "id": 50,
-      "firstName": "Shani",
-      "lastName": "Daniely",
-      "email": "sdaniely12@irs.gov",
-      "address": {
-        "zip": 1086,
-        "country": "Hungary",
-        "city": "Budapest",
-        "street": "Dobó utca",
-        "notes": "Something note."
-      },
-      "active": true
-    },
-    {
-      "id": 51,
-      "firstName": "Kiss",
-      "lastName": "Tóbiás",
-      "email": "kt@gmail.com",
-      "address": {
-        "zip": 1118,
-        "country": "Magyarország",
-        "city": "Budapest",
-        "street": "BAJZA",
-        "notes": "készpénzes"
-      },
-      "active": true
     }
   ],
   "products": [
@@ -714,17 +686,6 @@
       "image": "https://www.mafab.hu/static/profiles/2014/293/00/5212_32.jpg"
     },
     {
-      "id": 2,
-      "name": "Álomépítők",
-      "type": "film",
-      "catId": 2,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 1150,
-      "featured": false,
-      "active": true,
-      "image": "https://www.mafab.hu/static/2020/208/09/326447_1595834974.4647.jpg"
-    },
-    {
       "id": 4,
       "name": "Parasztvakítás",
       "type": "film",
@@ -734,28 +695,6 @@
       "featured": false,
       "active": true,
       "image": "https://www.mafab.hu/static/2021/6/10/340739_1610012767.4184.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Little",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 1700,
-      "featured": true,
-      "active": true,
-      "image": "https://www.mafab.hu/static/2019/22/17/311481_1548259916.8665.jpg"
-    },
-    {
-      "id": 6,
-      "name": "Kémecském",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 1200,
-      "featured": true,
-      "active": true,
-      "image": "https://www.mafab.hu/static/2020/49/11/319994_1582108101.796.jpg"
     },
     {
       "id": 7,
@@ -1000,17 +939,6 @@
       "image": "https://www.mafab.hu/static/profiles/2014/293/13/53464_47.jpg"
     },
     {
-      "id": 29,
-      "name": "Rocksuli",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 6574,
-      "featured": false,
-      "active": true,
-      "image": "https://www.mafab.hu/static/profiles/2014/293/10/44241_36.jpg"
-    },
-    {
       "id": 30,
       "name": "Instant család",
       "type": "film",
@@ -1231,17 +1159,6 @@
       "image": "https://www.mafab.hu/static/profiles/2014/293/14/54998_45.jpg"
     },
     {
-      "id": 50,
-      "name": "Az igazi csoda",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 1150,
-      "featured": true,
-      "active": true,
-      "image": "https://www.mafab.hu/static/2017/322/13/279811_1511093553.1703.jpg"
-    },
-    {
       "id": 51,
       "name": "Torrente 4.",
       "type": "film",
@@ -1341,15 +1258,24 @@
       "image": "https://www.mafab.hu/static/profiles/2014/293/11/45854_46.jpg"
     },
     {
-      "id": 60,
-      "name": "Bolondos péntek",
+      "id": 61,
+      "name": "Asterix és Obelix",
       "type": "film",
       "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 3000,
+      "description": "Lorem Ipsum",
+      "price": 1000,
       "featured": true,
-      "active": true,
-      "image": "https://www.mafab.hu/static/profiles/2014/293/11/47657_12.jpg"
+      "active": false
+    },
+    {
+      "id": 62,
+      "name": "Trója",
+      "type": "film",
+      "catId": 1,
+      "description": "Lorem ipsum Lorem Ipsum.",
+      "price": 2300,
+      "featured": true,
+      "active": true
     }
   ],
   "bills": [
@@ -1628,12 +1554,6 @@
       "orderID": 50,
       "amount": 21290,
       "status": "new"
-    },
-    {
-      "id": 51,
-      "orderID": 1,
-      "amount": 4111,
-      "status": "new"
     }
   ],
   "orders": [
@@ -1642,13 +1562,6 @@
       "customerID": 47,
       "productID": 47,
       "amount": 50,
-      "status": "paid"
-    },
-    {
-      "id": 3,
-      "customerID": 13,
-      "productID": 29,
-      "amount": 9,
       "status": "paid"
     },
     {
@@ -2048,13 +1961,6 @@
       "customerID": 14,
       "productID": 29,
       "amount": 11,
-      "status": "new"
-    },
-    {
-      "id": 62,
-      "customerID": 3,
-      "productID": 46,
-      "amount": 99,
       "status": "new"
     },
     {

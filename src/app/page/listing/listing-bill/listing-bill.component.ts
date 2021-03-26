@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Bill } from 'src/app/model/bill';
 import { BillService } from 'src/app/service/bill.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
+import { StatisticsService } from 'src/app/service/statistics.service';
 
 @Component({
   selector: 'app-listing-bill',
@@ -11,6 +12,9 @@ import { ConfigService, ITableCol } from 'src/app/service/config.service';
   styleUrls: ['./listing-bill.component.scss']
 })
 export class ListingBillComponent implements OnInit {
+
+  numberOfAllBills$: BehaviorSubject<number> = this.statisticsService
+    .numberOfAllBills$;
 
   @Input() id: number = 0;
 
@@ -21,23 +25,31 @@ export class ListingBillComponent implements OnInit {
   filterKeys: string[] = Object.keys(new Bill());
   sorterKey: string = '';
   sorterDirection: number = 1;
+  selectedBillToDelete: Bill = new Bill();
 
   constructor(
     private billService: BillService,
     private router: Router,
     private configService: ConfigService,
+    private statisticsService: StatisticsService
   ) { }
 
   ngOnInit(): void {
     this.billService.getAll();
+    this.statisticsService.subscribeForData();
   }
 
-  onRemove(bill: Bill): void {
-    this.billService.remove(bill)
-      .subscribe(() => {
-        this.billService.getAll();
-        this.router.navigate(['/bills']);
-      });
+  setToDelete(bill: Bill): void {
+    this.selectedBillToDelete = bill;
+  }
+
+  onRemove(): void {
+    this.billService.remove(this.selectedBillToDelete)
+      .subscribe(
+        () => {
+          this.billService.getAll();
+          this.router.navigate(['/bills']);
+        })
   }
 
   onChangePhrase(event: Event): void {
