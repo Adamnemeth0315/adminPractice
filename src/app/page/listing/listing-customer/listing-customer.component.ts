@@ -6,6 +6,10 @@ import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { CustomerService } from 'src/app/service/customer.service';
 import { StatisticsService } from 'src/app/service/statistics.service';
 
+interface IPageBtn {
+  page: number;
+}
+
 @Component({
   selector: 'app-listing-customer',
   templateUrl: './listing-customer.component.html',
@@ -24,6 +28,31 @@ export class ListingCustomerComponent implements OnInit {
   sorterKey: string = '';
   sorterDirection: number = 1;
   selectedCustomerToDelete: Customer = new Customer();
+
+
+  //Paginator
+  customersNum: number = 0;  //Hány vásárló van összesen
+  pageSize: number = 10;  //Oldal méret egy oldalon hány vásárló jelenik meg
+  pageStart: number = 1;  //Ez pedig azt mondja meg, hogy a gombok közül melyik az első. 
+  currentPage: number = 1; //Jelenleg melyik oldalon vagyok.
+  get paginator(): IPageBtn[] {
+    const pages: IPageBtn[] = [];
+    for (let i = 0; i < this.customersNum / this.pageSize && pages.length < 10; i++) {
+      const page = this.pageStart + i;
+      pages.push({ page });
+    }
+    return pages;
+  }
+
+  get pageSliceStart(): number {
+    const index = this.currentPage - 1;
+    return index === 0 ? 0 : (index * this.pageSize)
+  }
+
+  get pageSliceEnd(): number {
+    return this.pageSliceStart + this.pageSize;
+  }
+
 
   constructor(
     private customerService: CustomerService,
@@ -64,5 +93,16 @@ export class ListingCustomerComponent implements OnInit {
     this.sorterKey = key;
   }
 
+  onPaginate(ev: Event, btn: IPageBtn): void {
+    ev.preventDefault();
+    this.currentPage = btn.page;
+    this.pageStart = (btn.page - 5) < 1 ? 1 : (btn.page - 5);
+  }
+
+  onStepPage(ev: Event, step: number): void {
+    ev.preventDefault();
+    this.currentPage += step;
+    this.pageStart = (this.currentPage - 5) < 1 ? 1 : (this.currentPage - 5);
+  }
 
 }

@@ -1,5 +1,6 @@
 .sorter-header {
     cursor: pointer;
+    user-select: none;
 }
 
 .sorter-header:active {

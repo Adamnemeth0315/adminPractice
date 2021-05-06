@@ -680,7 +680,7 @@
       "type": "film",
       "catId": 2,
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 6000,
+      "price": 5000,
       "featured": false,
       "active": true,
       "image": "https://www.mafab.hu/static/profiles/2014/293/00/5212_32.jpg"
@@ -849,17 +849,6 @@
       "featured": true,
       "active": true,
       "image": "https://www.mafab.hu/static/profiles/2014/293/11/45762_38.jpg"
-    },
-    {
-      "id": 21,
-      "name": "Lekapcsolódás",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "price": 999,
-      "featured": true,
-      "active": true,
-      "image": "https://www.mafab.hu/static/profiles/2014/293/23/87149_39.jpg"
     },
     {
       "id": 22,
@@ -1274,6 +1263,16 @@
       "catId": 1,
       "description": "Lorem ipsum Lorem Ipsum.",
       "price": 2300,
+      "featured": true,
+      "active": true
+    },
+    {
+      "id": 63,
+      "name": "Jóbarátok (sorozat)",
+      "type": "sorozat",
+      "catId": 1,
+      "description": "1-től a 10. évadig nézhető. ",
+      "price": 3500,
       "featured": true,
       "active": true
     }

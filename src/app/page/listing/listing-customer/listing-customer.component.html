@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     <tr
-                        *ngFor="let customer of customerList$ | async | filter:filterKey:phrase | sorter:sorterKey:sorterDirection ">
+                        *ngFor="let customer of customerList$ | async | filter:filterKey:phrase | sorter:sorterKey:sorterDirection | slice:pageSliceStart:pageSliceEnd ">
                         <td>
                             {{ customer.id}}
                         </td>
@@ -48,7 +48,8 @@
                             {{ customer.address.city }} {{ customer.address.street }}
                         </td>
                         <td>
-                            <div *ngIf="customer.active" style="text-align: center;"><i class="fa fa-check"></i></div>
+                            <div *ngIf=" customer.active" style="text-align: center;"><i class="fa fa-check"></i>
+                            </div>
                             <div *ngIf="!customer.active" style="text-align: center;"><i class="fa fa-times"></i></div>
                         </td>
                         <td>
@@ -77,6 +78,28 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <div class="row">
+                <div class="col-12">
+                    <nav class="d-flex justify-content-end">
+                        <ul class="pagination">
+                            <li [class.disabled]="currentPage === 1" class="page-item">
+                                <a (click)="onStepPage($event, -1)" class="page-link" href="#">Previous</a>
+                            </li>
+                            <li *ngFor="let btn of paginator" class="page-item"
+                                [class.active]="btn.page === currentPage">
+                                <a (click)="onPaginate($event, btn)" class="page-link" href="#">
+                                    {{ btn.page }}
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a (click)="onStepPage($event, 1)" class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
