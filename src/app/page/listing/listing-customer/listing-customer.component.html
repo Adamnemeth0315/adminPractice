@@ -1,5 +1,9 @@
 <h1 class="text-center my-4">Vásárlók listája</h1>
 
+<h3 class="text-center">
+    {{ maxSize}}
+</h3>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-4 my-3 mx-auto">
@@ -92,7 +96,7 @@
                                     {{ btn.page }}
                                 </a>
                             </li>
-                            <li class="page-item">
+                            <li [class.disabled]="currentPage === maxSize" class="page-item next">
                                 <a (click)="onStepPage($event, 1)" class="page-link" href="#">Next</a>
                             </li>
                         </ul>
